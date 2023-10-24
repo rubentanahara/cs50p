@@ -441,3 +441,431 @@ Through the work of this single lecture, you have learned abilities that you wil
 - Floats
 - Creating your own functions and
 - Return values.
+
+## Conditionals
+
+- Built within Python are a set of “operators” that can are used to ask mathematical questions.
+- > and < symbols are probably quite familiar to you.
+- > = denotes “greater than or equal to.”
+- <= denotes “less than or equal to.”
+- == denotes “equals, though do notice the double equal sign! A single equal sign would assign a value. Double equal signs are used to compare variables.
+- != denotes “not equal to.
+  Conditional statements compare a left-hand term to a right-hand term.
+
+## If Statement
+
+```python
+
+x = int(input("What's x? "))
+y = int(input("What's y? "))
+
+if x < y:
+    print("x is less than y")
+
+```
+
+- Then, the `if` statement compares x and y. If the condition of `x < y` is met, the print statement is executed.
+
+- If statements use `bool` or boolean values (true or false) to decide whether or not to execute. If the statement of `x > y` is true, the compiler will register it as true and execute the code.
+
+## Control Flow, elif, and else
+
+```python
+x = int(input("What's x? "))
+y = int(input("What's y? "))
+
+if x < y:
+    print("x is less than y")
+if x > y:
+    print("x is greater than y")
+if x == y:
+    print("x is equal to y")
+
+```
+
+We can improve the code:
+
+```python
+
+x = int(input("What's x? "))
+y = int(input("What's y? "))
+
+if x < y:
+    print("x is less than y")
+elif x > y:
+    print("x is greater than y")
+elif x == y:
+    print("x is equal to y")
+
+```
+
+Notice how the use of elif allows the program to make less decisions. First, the if statement is evaluated. If this statement is found to be true, all the elif statements not be run at all. However, if the if statement is evaluated and found to be false, the first elif will be evaluated. If this is true, it will not run the final evaluation.
+
+There is one final improvement we can make to our program. Notice how logically elif x == y is not a necessary evaluation to run. After all, if logically x is not less than y AND x is not greater than y, x MUST equal y. Therefore, we don’t have to run elif x == y. We can create a “catch-all,” default outcome using an else statement. We can revise as follows:
+
+```python
+x = int(input("What's x? "))
+y = int(input("What's y? "))
+
+if x < y:
+    print("x is less than y")
+elif x > y:
+    print("x is greater than y")
+else:
+    print("x is equal to y")
+
+```
+
+## or
+
+`or` allows your program to decide between one or more alternatives. For example, we could further edit our program as follows:
+
+```python
+x = int(input("What's x? "))
+y = int(input("What's y? "))
+
+if x < y or x > y:
+    print("x is not equal to y")
+else:
+    print("x is equal to y")
+```
+
+we can make an improvement:
+
+```python
+x = int(input("What's x? "))
+y = int(input("What's y? "))
+
+if x == y:
+    print("x is equal to y")
+else:
+    print("x is not equal to y")
+
+```
+
+Notice that the == operator evaluates if what is on the left and right are equal to one another. That use of double equal signs is very important. If you use only one equal sign, an error will likely be thrown by the compiler.
+
+## and
+
+Similar to or, and can be used within conditional statements.
+
+```python
+score = int(input("Score: "))
+if score >= 90 and score <= 100:
+    print("Grade: A")
+elif score >=80 and score < 90:
+    print("Grade: B")
+elif score >=70 and score < 80:
+    print("Grade: C")
+elif score >=60 and score < 70:
+    print("Grade: D")
+else:
+    print("Grade: F")
+```
+
+We could improve our code as follows:
+
+```python
+  score = int(input("Score: "))
+
+  if 90 <= score <= 100:
+      print("Grade: A")
+  elif 80 <= score < 90:
+      print("Grade: B")
+  elif 70 <= score < 80:
+      print("Grade: C")
+  elif 60 <= score < 70:
+      print("Grade: D")
+  else:
+      print("Grade: F")
+```
+
+```python
+score = int(input("Score: "))
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+elif score >= 60:
+    print("Grade: D")
+else:
+    print("Grade: F")
+```
+
+## Modulo
+
+```python
+x = int(input("What's x? "))
+
+if x % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+```
+
+## Creating Our Own Parity Function
+
+We can create our own function to check whether a number is even or odd. Adjust your code as follows:
+
+```
+def main():
+    x = int(input("What's x? "))
+    if is_even(x):
+        print("Even")
+    else:
+        print("Odd")
+
+
+def is_even(n):
+    if n % 2 == 0:
+        return True
+    else:
+        return False
+
+
+main()
+```
+
+## Pythonic
+
+In the programming world, there are types of programming that are called “Pythonic” in nature. That is, there are ways to program that are sometimes only seen in Python programming. Consider the following revision to our progra
+
+```python
+def main():
+    x = int(input("What's x? "))
+    if is_even(x):
+        print("Even")
+    else:
+        print("Odd")
+
+
+def is_even(n):
+    return True if n % 2 == 0 else False
+
+
+main()
+```
+
+We can further revise our code and make it more and more readable:
+
+```python
+def main():
+    x = int(input("What's x? "))
+    if is_even(x):
+        print("Even")
+    else:
+        print("Odd")
+
+
+def is_even(n):
+    return n % 2 == 0
+
+
+main()
+```
+
+## match
+
+Consider the following program:
+
+```python
+name = input("What's your name? ")
+
+if name == "Harry":
+      print("Gryffindor")
+  elif name == "Hermione":
+      print("Gryffindor")
+  elif name == "Ron":
+      print("Gryffindor")
+  elif name == "Draco":
+      print("Slytherin")
+  else:
+      print("Who?")
+```
+
+Notice the first three conditional statements print the same response.
+
+improvment:
+
+```python
+ name = input("What's your name? ")
+
+  if name == "Harry" or name == "Hermione" or name == "Ron":
+      print("Gryffindor")
+  elif name == "Draco":
+      print("Slytherin")
+  else:
+      print("Who?")
+```
+
+Alternatively, we can use match statements to map names to houses. Consider the following code:
+
+```python
+ name = input("What's your name? ")
+
+  match name:
+      case "Harry":
+          print("Gryffindor")
+      case "Hermione":
+          print("Gryffindor")
+      case "Ron":
+          print("Gryffindor")
+      case "Draco":
+          print("Slytherin")
+      case _:
+          print("Who?")
+```
+
+Notice the use of the \_ symbol in the last case. This will match with any input, resulting in similar behavior as an else statement.
+
+A match statement compares the value following the match keyword with each of the values following the case keywords. In the event a match is found, the respective indented code section is executed and the program stops the matching.
+We can improve the code:
+
+```python
+ name = input("What's your name? ")
+
+  match name:
+      case "Harry" | "Hermione" | "Ron":
+          print("Gryffindor")
+      case "Draco":
+          print("Slytherin")
+      case _:
+          print("Who?")
+```
+
+Notice, the use of the single vertical bar |. Much like the or keyword, this allows us to check for multiple values in the same case statement.
+
+You now have the power within Python to use conditional statements to ask questions and have your program take action accordingly. In this lecture, we discussed…
+
+- `Conditionals`
+- `if Statements`
+- `Control flow, elif, and else`
+- `or`
+- `and`
+- `Modulo`
+- `Creating your own function`
+- `Pythonic coding`
+- `and match`
+
+# Iterations
+
+## Loops
+
+- Essentially, loops are a way to do something over and over again
+
+```python
+print("meow")
+print("meow")
+print("meow")
+```
+
+- Loops enable you to create a block of code that executes over and over again.
+
+## While loops
+
+- The while loop is nearly universal throughout all coding languages.
+- Such a loop will repeat a block of code over and over again.
+- In the text editor window, edit your code as follows:
+
+```python
+i = 3
+while i != 0:
+    print("meow")
+```
+
+Notice how even though this code will execute print("meow") multiple times, it will never stop! It will loop forever. while loops work by repeatedly asking if the condition of the loop has been fulfilled. In this case, the compiler is asking “does i not equal zero?” When you get stuck in a loop that executes forever, you can press control-c on your keyboard to break out of the loop.
+
+To fix :
+
+```python
+i = 3
+while i != 0:
+  print("meow")
+  i = i - 1
+```
+
+to decrease:
+
+```python
+ i = 1
+  while i <= 3:
+      print("meow")
+      i = i + 1
+```
+
+```python
+i = 0
+while i < 3:
+    print("meow")
+    i += 1
+```
+
+## For loops
+
+A `for` loop is a different type of loop.
+
+To best understand a for loop, it’s best to begin by talking about a new variable type called a list in Python. As in other areas of our lives, we can have a grocery list, a to-do list, etc.
+
+```python
+
+for i in [0, 1, 2]:
+    print("meow")
+
+```
+
+Notice how clean this code is compared to your previous while loop code. In this code, i begins with 0, meows, i is assigned 1, meows, and, finally, i is assigned 2, meows, and then ends.
+
+While this code accomplishes what we want, there are some possibilities for improving our code for extreme cases. At first glance, our code looks great. However, what if you wanted to iterate up to a million? It’s best to create code that can work with such extreme cases. Accordingly, we can improve our code as follows:
+
+```python
+for i in range(3):
+    print("meow")
+
+```
+
+Notice how range(3) provides back three values (0, 1, and 2) automatically. This code will execute and produce the intended effect, meowing three times.
+
+Our code can be further improved. Notice how we never use i explicitly in our code. That is, while Python needs the i as a place to store the number of the iteration of the loop, we never use it for any other purpose. In Python, if such a variable does not have any other significance in our code, we can simply represent this variable as a single underscore \_. Therefore, you can modify your code as follows:
+
+```python
+for _ in range(3):
+    print("meow")
+```
+
+Notice how changing the i to \_ has zero impact on the functioning of our program.
+
+Our code can be further improved. To stretch your mind to the possibilities within Python, consider the following code:
+
+```python
+print("meow" * 3)
+```
+
+Notice how it will meow three times, but the program will produce meowmeowmeow as the result. Consider: How could you create a line break at the end of each meow?
+
+Indeed, you can edit your code as follows:
+
+```python
+print("meow\n" * 3, end="")
+```
+
+Notice how this code produces three meows, each on a separate line. By adding end="" and the \n we tell the compiler to add a line break at the end of each meow.
+
+## Improving with user input
+
+We can use loops as a way of validating the input of the user.
+
+A common paradigm within Python is to use a while loop to validate the input of the user.
+
+```python
+while True:
+    n = int(input("What's n? "))
+    if n < 0:
+        continue
+    else:
+        break
+```
+
+Notice that we’ve introduced two new keywords in Python, continue and break. continue explicitly tells Python to go to the next iteration of a loop. break, on the other hand, tells Python to “break out” of a loop early, before it has finished all of its iterations. In this case, we’ll continue to the next iteration of the loop when n is less than 0—ultimately reprompting the user with “What’s n?”. If though, n is greater than or equal to 0, we’ll break out of the loop and allow the rest of our program to run.
