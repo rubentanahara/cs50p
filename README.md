@@ -869,3 +869,96 @@ while True:
 ```
 
 Notice that we’ve introduced two new keywords in Python, continue and break. continue explicitly tells Python to go to the next iteration of a loop. break, on the other hand, tells Python to “break out” of a loop early, before it has finished all of its iterations. In this case, we’ll continue to the next iteration of the loop when n is less than 0—ultimately reprompting the user with “What’s n?”. If though, n is greater than or equal to 0, we’ll break out of the loop and allow the rest of our program to run.
+
+# Lists
+
+```python
+students = ["Hermione","Harry","Ron"]
+
+print(students[0])
+...
+...
+
+```
+
+We can use loops to iterates over the list
+https://docs.python.org/3/tutorial/datastructures.html#more-on-lists
+
+```python
+students = ["Hermione","Harry","Ron"]
+
+for s in students:
+    print(s)
+```
+
+# Length
+
+We can use `len` as a way of checking the length of the list called students
+
+```python
+students = ["Hermoine", "Harry", "Ron"]
+
+for i in range(len(students)):
+    print(i + 1, students[i])
+```
+
+Notice how executing this code results in not only getting the position of each student plus one using i + 1, but also prints the name of each student. len allow you to dynamically see how long the list of the students is regardless how much it grows.
+
+https://docs.python.org/3/library/functions.html?highlight=len#len
+
+# Dictionaries
+
+- dicts or dictionaries is a data structure that allows you to associate keys with values
+- Where a list is a list of multiple values, a dict associates a key with a value.
+
+```python
+students = ["Hermoine", "Harry", "Ron", "Draco"]
+houses = ["Gryffindor", "Gryffindor", "Griffindor", "Slytherin"]
+```
+
+However, this can become quite cumbersome as our lists grow!
+
+```python
+students = {
+    "Hermoine": "Gryffindor",
+    "Harry": "Gryffindor",
+    "Ron": "Gryffindor",
+    "Draco": "Slytherin",
+}
+print(students["Hermoine"])
+print(students["Harry"])
+print(students["Ron"])
+print(students["Draco"])
+```
+
+Notice how we use {} curly braces to create a dictionary. Where lists use numbers to iterate through the list, dicts allow us to use words.
+
+if you want to print the names of the students :
+
+```python
+for student in students:
+    print(student)
+```
+
+print both key and value
+
+```python
+for student in students:
+    print(student, students[student])
+```
+
+list of dicts
+
+```python
+students = [
+    {"name": "Hermoine", "house": "Gryffindor", "patronus": "Otter"},
+    {"name": "Harry", "house": "Gryffindor", "patronus": "Stag"},
+    {"name": "Ron", "house": "Gryffindor", "patronus": "Jack Russell terrier"},
+    {"name": "Draco", "house": "Slytherin", "patronus": None},
+]
+
+for student in students:
+    print(student["name"], student["house"], student["patronus"], sep=", ")
+```
+
+Dictionaries docs: https://docs.python.org/3/tutorial/datastructures.html#dictionaries
